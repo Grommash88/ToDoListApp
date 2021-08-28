@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Регистрация</title>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div id="login-form" class="reg-form">
+  <form th:method="POST" th:action="@{/authentification/registration}" th:object="${userDto}">
+    <h2 class="reg-h2">Регистрация</h2>
+    <label for="name">Имя</label>
+    <input class="reg-field-name" type="text" th:field="*{name}" value="" id="name">
+    <br><br>
+    <label for="password">Пароль</label>
+    <input class="reg-field-password" type="password" th:field="*{password}" value="" id="password">
+    <br><br>
+    <label for="password">Пароль повтор</label>
+    <input class="reg-field-password-rep" type="password" th:field="*{repeatPassword}" value="">
+    <br><br>
+    <button id="reg-submit">Зарегистрироваться</button>
+  </form>
+  <br><br>
+</div>
+</body>
+</html>

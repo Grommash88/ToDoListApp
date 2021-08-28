@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Таск треккер</title>
+</head>
+<body>
+<div id="task-form">
+    <form th:method="POST" th:action="@{/new}" th:object="${taskRequestDTO}">
+        <h2>Запланировать событие</h2>
+        <label for="name">Название события:</label>
+        <input type="text" th:field="*{name}" value="" id="name">
+        <label for="description">Описание события:</label>
+        <input type="text" th:field="*{description}" value="" id="description">
+        <hr>
+        <button id="save-task">Добавить в список</button>
+    </form>
+</div>
+<h1>Список запланированных событий </h1>
+
+<br><br>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task : ${tasks}">
+        <td th:text="${task.id}"></td>
+        <td th:text="${task.name}"></td>
+        <td th:text="${task.description}"></td>
+        <td><a th:href="@{/task/{id}(id=${task.id})}">Edit</a></td>
+    </tr>
+    </tbody>
+
+</table>
+
+</body>
+</html>
+
+
+

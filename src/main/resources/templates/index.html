@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ToDoList</title>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="user-form">
+  <form th:method="GET" th:action="@{authentification/login}">
+    <button id="login">Войти</button>
+  </form>
+</div>
+  <br><br>
+<div class="user-form">
+  <form th:method="GET" th:action="@{authentification/registration}">
+  <button id="registration">Регистрация</button>
+  </form>
+</div>
+
+</body>
+</html>

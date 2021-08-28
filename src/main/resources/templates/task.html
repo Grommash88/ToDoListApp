@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+</head>
+<body>
+<div id="task-form">
+    <form action="#" name="_method" th:action="@{/updateTask/{id}(id=${task.id})}" th:object="${task}" th:method="PATCH">
+        <label for="id">Id события</label>
+        <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+        <br>
+        <label for="name">Название события</label>
+        <input readonly type="text" th:field="*{name}" id="name" placeholder="NAME">
+        <br>
+        <label for="description">Описание события:</label>
+        <input type="text" th:field="*{description}" value="" id="description">
+        <hr>
+        <input type="submit" value="Update">
+
+    </form>
+    <br>
+    <form action="#" th:action="@{/deleteTask/{id}(id=${task.id})}" th:object="${task}" th:method="DELETE">
+        <input type="submit" value="Delete">
+    </form>
+</div>
+</body>
+</html>
