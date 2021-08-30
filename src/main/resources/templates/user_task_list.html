@@ -6,40 +6,30 @@
 </head>
 <body>
 <div id="task-form">
-    <form th:method="POST" th:action="@{/new}" th:object="${taskRequestDTO}">
+    <form th:method="GET" th:action="@{/tasks/new}" th:object="${taskRequestDTO}">
         <h2>Запланировать событие</h2>
-        <label for="name">Название события:</label>
-        <input type="text" th:field="*{name}" value="" id="name">
-        <label for="description">Описание события:</label>
-        <input type="text" th:field="*{description}" value="" id="description">
+        <input type="hidden"  th:value="${user.userId}" th:attr="name='authorId'" >
+        <label for="name">Что запланировано?</label>
+        <input type="text" th:field="*{description}" value="" id="name">
         <hr>
         <button id="save-task">Добавить в список</button>
     </form>
 </div>
-<h1>Список запланированных событий </h1>
-
-<br><br>
 <table>
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
+    <h1>Список запланированных событий </h1>
+    <tbody id="task-table">
     <tr th:each="task : ${tasks}">
-        <td th:text="${task.id}"></td>
-        <td th:text="${task.name}"></td>
         <td th:text="${task.description}"></td>
-        <td><a th:href="@{/task/{id}(id=${task.id})}">Edit</a></td>
+        <td>
+            <form action="#" name="_method" th:action="@{/tasks/task/complete/{id}(id=${task.id})}" th:method="PATCH">
+            <button >complete task</button>
+            </form>
+            <form th:method="GET" th:action="@{/tasks/task/{id}(id=${task.id})}">
+                <button th:href="@{/tasks/task/{id}(id=${task.id})}">Edit</button>
+            </form>
+        </td>
     </tr>
     </tbody>
-
 </table>
-
 </body>
 </html>
-
-
-

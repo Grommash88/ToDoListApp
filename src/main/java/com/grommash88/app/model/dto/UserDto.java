@@ -1,4 +1,4 @@
-package com.grommash88.app.dto;
+package com.grommash88.app.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

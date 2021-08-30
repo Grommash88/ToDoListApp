@@ -1,4 +1,4 @@
-package com.grommash88.app.dto;
+package com.grommash88.app.model.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -15,11 +15,9 @@ import lombok.NoArgsConstructor;
 //Тело запроса Таска
 public class TaskRequestDTO {
 
-  // Имя Таска
-  @ApiModelProperty(value = "Имя таска", example = "Сходить в Мфц")
-  private String name;
-
   //Описание Таска
   @ApiModelProperty(value = "Описание таска", example = "Сходить в мфц подать документы на замену паспорта")
   private String description;
+
+  private long authorId;
 }

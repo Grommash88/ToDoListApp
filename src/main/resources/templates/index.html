@@ -2,21 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ToDoList</title>
+  <title>Вход</title>
   <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
 <body>
-<div class="user-form">
-  <form th:method="GET" th:action="@{authentification/login}">
+<div id="login-form" class="user-form">
+  <form th:method="GET" th:action="@{/authentification/login}" th:object="${loginRequestDto}">
+    <h2>Вход в приложение</h2>
+    <label for="name">Имя</label>
+    <input required class="field-name" type="text" th:field="*{name}" value="" id="name">
+    <br><br>
+    <label for="password">Пароль</label>
+    <input required minlength="8" class="field-password" type="password" th:field="*{password}" value="" id="password">
+    <br><br>
     <button id="login">Войти</button>
   </form>
 </div>
-  <br><br>
-<div class="user-form">
-  <form th:method="GET" th:action="@{authentification/registration}">
+<br>
+<form th:method="GET" th:action="@{authentification/registration}">
   <button id="registration">Регистрация</button>
-  </form>
-</div>
-
+</form>
 </body>
 </html>

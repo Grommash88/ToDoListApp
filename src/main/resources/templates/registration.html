@@ -10,13 +10,13 @@
   <form th:method="POST" th:action="@{/authentification/registration}" th:object="${userDto}">
     <h2 class="reg-h2">Регистрация</h2>
     <label for="name">Имя</label>
-    <input class="reg-field-name" type="text" th:field="*{name}" value="" id="name">
+    <input class="reg-field-name" type="text" required th:field="*{name}" value="" id="name">
     <br><br>
     <label for="password">Пароль</label>
-    <input class="reg-field-password" type="password" th:field="*{password}" value="" id="password">
+    <input class="reg-field-password" type="password" minlength="8" required th:field="*{password}" value="" id="password">
     <br><br>
-    <label for="password">Пароль повтор</label>
-    <input class="reg-field-password-rep" type="password" th:field="*{repeatPassword}" value="">
+    <label for="password">Повтор пароля</label>
+    <input class="reg-field-password-rep" type="password" minlength="8" required th:field="*{repeatPassword}" value="">
     <br><br>
     <button id="reg-submit">Зарегистрироваться</button>
   </form>
