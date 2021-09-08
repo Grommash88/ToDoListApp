@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Task</title>
+  <meta charset="UTF-8">
+  <title>Task</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/main.css">
 </head>
 <body>
-<div id="task-form">
-    <form action="#" name="_method" th:action="@{/tasks/updateTask/{id}(id=${task.id})}" th:object="${task}" th:method="PATCH">
-        <input readonly type="hidden" th:field="*{id}" id="id" placeholder="ID">
-        <br>
-        <label for="description">Описание события:</label>
-        <input type="text" th:field="*{description}" value="" id="description">
-        <hr>
-        <input type="submit" value="Update">
-
-    </form>
+<div>
+  <form action="#" name="_method" th:action="@{/tasks/updateTask/{id}(id=${task.id})}" th:object="${task}" th:method="PATCH">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <input type="hidden" th:field="*{id}" id="id" placeholder="ID">
     <br>
-    <form action="#" th:action="@{/tasks/deleteTask/{id}(id=${task.id})}" th:object="${task}" th:method="DELETE">
-        <input type="submit" value="Delete">
-    </form>
+    <label for="input">Описание события:</label>
+    <input type="text" required th:field="*{description}" value="" id="input">
+    <hr>
+    <button>Обновить</button>
+  </form>
+  <br>
+  <form action="#" th:action="@{/tasks/deleteTask/{id}(id=${task.id})}" th:object="${task}" th:method="DELETE">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+   <button>Удалить</button>
+  </form>
 </div>
 </body>
 </html>

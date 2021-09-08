@@ -1,4 +1,4 @@
-package com.grommash88.app.model.dto;
+package com.grommash88.app.model;
 
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
@@ -10,12 +10,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoginRequestDto {
+public class TaskRequestDTO {
 
   @NotNull
-  private String name;
+  private String description;
 
   @NotNull
-  private String password;
-
+  private long authorId;
 }
+
