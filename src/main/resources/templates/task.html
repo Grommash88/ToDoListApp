@@ -11,15 +11,15 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <input type="hidden" th:field="*{id}" id="id" placeholder="ID">
     <br>
-    <label for="input">Описание события:</label>
+    <label for="input">Task Description:</label>
     <input type="text" required th:field="*{description}" value="" id="input">
     <hr>
-    <button>Обновить</button>
+    <button>Save</button>
   </form>
   <br>
   <form action="#" th:action="@{/tasks/deleteTask/{id}(id=${task.id})}" th:object="${task}" th:method="DELETE">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-   <button>Удалить</button>
+   <button>Delete</button>
   </form>
 </div>
 </body>

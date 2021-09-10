@@ -1,7 +1,7 @@
 package com.grommash88.app.model;
 
 import com.sun.istack.NotNull;
-import java.time.LocalDateTime;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,19 +10,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.Hibernate;
 
 @Entity
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
+@AllArgsConstructor
 @Table(name = "task")
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Task {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
   @NotNull
@@ -35,5 +40,23 @@ public class Task {
   @NotNull
   private boolean isCompleted;
 
+  @NotNull
   private String completedDate;
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {
+      return false;
+    }
+    Task task = (Task) o;
+    return Objects.equals(id, task.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return 0;
+  }
 }

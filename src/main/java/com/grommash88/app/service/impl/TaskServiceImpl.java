@@ -19,7 +19,7 @@ public class TaskServiceImpl implements TaskService {
 
   private final TaskRepository taskRepository;
 
-  private final String expMsgPattern = "Событие с id=%d не найдено.";
+  private final String expMsgPattern = "Task with id =% d not found.";
 
   @Override
   public long addTask(TaskRequestDTO taskRequestDTO) {

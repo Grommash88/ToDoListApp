@@ -15,27 +15,27 @@
           <form method="GET" th:action="@{/tasks/no_completed_tasks}">
             <input type="hidden" th:attr="value=${taskRequestDTO.authorId}, name='authorId'">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <button>Показать незавершенные события</button>
+            <button>Show no completed tasks</button>
           </form>
         </td>
         <td>
           <form method="GET" th:action="@{/tasks/completed_tasks}">
             <input type="hidden" th:attr="value=${taskRequestDTO.authorId}, name='authorId'">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <button>Показать завершенные события</button>
+            <button>Show completed tasks</button>
           </form>
         </td>
         <td>
           <form method="GET" th:action="@{/tasks/all_tasks}">
             <input type="hidden" th:attr="value=${taskRequestDTO.authorId}, name='authorId'">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <button>Показать все события</button>
+            <button>Show all tasks</button>
           </form>
         </td>
         <td>
           <form method="POST" th:action="@{/logout}">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <button>Выход</button>
+            <button>Log out</button>
           </form>
         </td>
       </tr>
@@ -45,25 +45,25 @@
 </div>
 
 <div th:if="${ex}">
-  <h3>Ошибка поиска сущности в базе данных</h3>
+  <h3>Error finding entity in the database</h3>
   <p th:text="${ex}"></p>
 </div>
 
 <div>
   <form th:method="GET" th:action="@{/tasks/new}" th:object="${taskRequestDTO}">
-    <h2>Запланировать событие</h2>
-    <label for="input">Что запланировано?</label>
+    <h2>Schedule a task</h2>
+    <label for="input">What's planned?</label>
     <input  type="text" id="input" required th:field="*{description}" value=""/>
     <input type="hidden" th:field="*{authorId}">
     <hr>
-    <button>Добавить в список</button>
+    <button>Add to the list</button>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
   </form>
 </div>
 
 <table>
 
-  <h1>Список запланированных событий </h1>
+  <h1>Task list</h1>
 
   <tbody>
   <tr th:each="task : ${tasks}">
@@ -75,13 +75,13 @@
     <td>
       <form action="#" name="_method" th:action="@{/tasks/task/complete/{id}(id=${task.id})}"
             th:method="PATCH">
-        <button>Завершить</button>
+        <button>To complete</button>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
       </form>
     </td>
     <td>
       <form th:method="GET" th:action="@{/tasks/task/{id}(id=${task.id})}">
-        <button>Редактировать</button>
+        <button>Edit</button>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
       </form>
     </td>

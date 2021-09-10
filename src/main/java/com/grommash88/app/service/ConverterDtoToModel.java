@@ -11,7 +11,7 @@ public class ConverterDtoToModel {
         .description(taskRequestDTO.getDescription())
         .authorId(taskRequestDTO.getAuthorId())
         .isCompleted(false)
-        .completedDate("Активен")
+        .completedDate("Active")
         .build();
   }
 }
