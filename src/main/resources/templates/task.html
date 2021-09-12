@@ -7,7 +7,8 @@
 </head>
 <body>
 <div>
-  <form action="#" name="_method" th:action="@{/tasks/updateTask/{id}(id=${task.id})}" th:object="${task}" th:method="PATCH">
+  <form action="#" name="_method" th:action="@{/tasks/updateTask/{id}(id=${task.id})}"
+        th:object="${task}" th:method="PATCH">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <input type="hidden" th:field="*{id}" id="id" placeholder="ID">
     <br>
@@ -17,9 +18,10 @@
     <button>Save</button>
   </form>
   <br>
-  <form action="#" th:action="@{/tasks/deleteTask/{id}(id=${task.id})}" th:object="${task}" th:method="DELETE">
+  <form action="#" th:action="@{/tasks/deleteTask/{id}(id=${task.id})}" th:object="${task}"
+        th:method="DELETE">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-   <button>Delete</button>
+    <button>Delete</button>
   </form>
 </div>
 </body>

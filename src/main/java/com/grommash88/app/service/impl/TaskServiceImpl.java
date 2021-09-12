@@ -22,11 +22,10 @@ public class TaskServiceImpl implements TaskService {
   private final String expMsgPattern = "Task with id =% d not found.";
 
   @Override
-  public long addTask(TaskRequestDTO taskRequestDTO) {
+  public void addTask(TaskRequestDTO taskRequestDTO) {
 
     Task task = ConverterDtoToModel.convertDtoToModel(taskRequestDTO);
     taskRepository.save(task);
-    return task.getId();
   }
 
   @Override
@@ -90,7 +89,7 @@ public class TaskServiceImpl implements TaskService {
     }
     Task updatingTask = taskRepository.findById(id).get();
     updatingTask.setCompleted(true);
-    updatingTask.setCompletedDate("Завершен: " + DateTimeFormatter
+    updatingTask.setStatusDescription("Completed: " + DateTimeFormatter
         .ofPattern("dd.MM.yyyy HH:mm").format(LocalDateTime.now()));
     taskRepository.save(updatingTask);
   }

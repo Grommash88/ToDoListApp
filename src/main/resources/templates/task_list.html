@@ -50,7 +50,7 @@
 </div>
 
 <div>
-  <form th:method="GET" th:action="@{/tasks/new}" th:object="${taskRequestDTO}">
+  <form th:method="POST" th:action="@{/tasks/new}" th:object="${taskRequestDTO}">
     <h2>Schedule a task</h2>
     <label for="input">What's planned?</label>
     <input  type="text" id="input" required th:field="*{description}" value=""/>
@@ -70,7 +70,7 @@
 
     <td th:text="${task.description}"></td>
     <td>|</td>
-    <td th:text="${task.completedDate}"></td>
+    <td th:text="${task.getStatusDescription}"></td>
     <td>|</td>
     <td>
       <form action="#" name="_method" th:action="@{/tasks/task/complete/{id}(id=${task.id})}"

@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Getter
@@ -27,7 +28,8 @@ import org.hibernate.Hibernate;
 public class Task {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.AUTO, generator="task_seq")
+  @GenericGenerator(name = "task_seq", strategy="increment")
   private long id;
 
   @NotNull
@@ -41,7 +43,7 @@ public class Task {
   private boolean isCompleted;
 
   @NotNull
-  private String completedDate;
+  private String statusDescription;
 
   @Override
   public boolean equals(Object o) {

@@ -24,6 +24,7 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.ToString.Exclude;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Getter
@@ -33,7 +34,8 @@ import org.hibernate.Hibernate;
 @Table(name = "usr")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "user_seq")
+    @GenericGenerator(name = "user_seq", strategy = "increment")
     private Long id;
 
     @NotNull

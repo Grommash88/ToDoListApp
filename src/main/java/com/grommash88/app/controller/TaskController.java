@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -21,7 +22,7 @@ public class TaskController {
 
   private final TaskService taskService;
 
-  @GetMapping("/new")
+  @PostMapping("/new")
   public String addTask(@ModelAttribute("taskRequestDTO") TaskRequestDTO taskRequestDTO) {
 
     taskService.addTask(taskRequestDTO);
@@ -62,7 +63,7 @@ public class TaskController {
     return "redirect:/welcome";
   }
 
-  @DeleteMapping("deleteTask/{id}")
+  @DeleteMapping("/deleteTask/{id}")
   public String deleteTask(@PathVariable Long id) {
 
     taskService.removeTask(id);
