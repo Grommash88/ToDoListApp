@@ -3,6 +3,7 @@ package com.grommash88.app.controller;
 import com.grommash88.app.model.Task;
 import com.grommash88.app.model.TaskRequestDTO;
 import com.grommash88.app.service.TaskService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping(value = "/tasks")
+@Api(value = "Работа с тасками")
 public class TaskController {
 
   private final TaskService taskService;

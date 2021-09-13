@@ -4,6 +4,7 @@ import com.grommash88.app.model.User;
 import com.grommash88.app.service.SecurityService;
 import com.grommash88.app.service.TaskService;
 import com.grommash88.app.service.UserService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequiredArgsConstructor
+@Api(value = "Работа с тасками")
 public class UserController {
 
   private final UserService userService;

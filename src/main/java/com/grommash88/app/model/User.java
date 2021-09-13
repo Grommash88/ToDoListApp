@@ -2,6 +2,8 @@ package com.grommash88.app.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -32,30 +34,38 @@ import org.hibernate.annotations.GenericGenerator;
 @ToString
 @RequiredArgsConstructor
 @Table(name = "usr")
+@ApiModel(value = "class User", description = "Сущьнось моделирующая пользователя программы, "
+    + "владельца списка тасков.")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "user_seq")
     @GenericGenerator(name = "user_seq", strategy = "increment")
+    @ApiModelProperty(value = "id пользователя",  example = "13")
     private Long id;
 
     @NotNull
+    @ApiModelProperty(value = "Имя пользователя",  example = "Имячко")
     private String username;
 
     @NotNull
+    @ApiModelProperty(value = "Пароль",  example = "12345678")
     private String password;
 
     @Transient
+    @ApiModelProperty(value = "Повтор пароля",  example = "12345678")
     private String passwordConfirm;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @ApiModelProperty(value = "Роли пользователя")
     private Set<Role> roles;
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
     @JsonIgnore
     @Exclude
+    @ApiModelProperty(value = "Список событий пользователя")
     private List<Task> tasks;
 
     @Override
